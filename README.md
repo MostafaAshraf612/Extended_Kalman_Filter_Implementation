@@ -1,69 +1,61 @@
-Extended Kalman Filter (EKF) for Sensor Fusion 🚗💨
+Extended Kalman Filter (EKF) for Sensor Fusion 🚗
 
-This project implements a sensor fusion algorithm using an Extended Kalman Filter (EKF) to accurately track moving objects in 2D space. It fuses measurements from radar and lidar sensors to estimate both position and velocity, providing a robust state estimation system for self-driving cars.
+This project implements a sensor fusion algorithm using an Extended Kalman Filter (EKF) to track moving objects in 2D space. It fuses measurements from radar and lidar sensors to accurately estimate both position and velocity, suitable for self-driving car applications.
 
 Project Overview
 
-Language & Libraries:
+Languages & Libraries
 
-C++ for high-performance numerical computation
+C++ – Core implementation
 
-Eigen for linear algebra and matrix operations
+Eigen – Matrix and vector operations
 
-uWebSockets for real-time telemetry simulation and visualization
+uWebSockets – Real-time data exchange with simulator
 
-JSON for Modern C++ (nlohmann/json) for parsing sensor data
+JSON for Modern C++ – Parsing sensor measurements
 
-Core Features:
+Key Features
 
-Lidar Measurements: Linear updates using standard Kalman Filter equations.
+Sensor Fusion: Combines lidar and radar measurements for better accuracy.
 
-Radar Measurements: Non-linear updates using Extended Kalman Filter (EKF) equations.
+EKF Updates: Radar measurements use nonlinear EKF equations; lidar uses linear Kalman Filter equations.
 
-RMSE Computation: Calculates Root Mean Square Error to evaluate the filter's accuracy in estimating position and velocity.
+RMSE Evaluation: Computes Root Mean Square Error for position (x, y) and velocity (vx, vy).
 
-CSV Export: Optionally saves state estimates and RMSE values to CSV for offline analysis.
+CSV Export: Optionally saves estimated states and RMSE for offline analysis.
 
-Real-Time Simulation: Interfaces with a simulator or dataset for live visualization of predictions versus ground truth.
-
-Key Components:
-
-FusionEKF – Manages sensor fusion and integrates predictions and updates for both radar and lidar measurements.
-
-KalmanFilter – Implements the core Kalman Filter and Extended Kalman Filter equations.
-
-Tools – Computes RMSE and Jacobian matrices; handles edge cases to prevent numerical instability.
-
-main.cpp – Connects to a simulator, parses incoming measurements, feeds data to FusionEKF, and outputs estimates and RMSE.
+Real-Time Simulation: Integrates with a simulator or dataset for live visualization.
 
 How It Works
 
 Initialization
 
-The filter initializes the state vector x_ based on the first sensor measurement (radar or lidar).
+The filter initializes the state vector x_ from the first measurement (radar or lidar).
 
-Covariance matrices and process noise are set for prediction.
+Covariance and process noise matrices are set.
 
-Prediction Step
+Prediction
 
-Uses a linear motion model with elapsed time dt to predict the object's next state.
+Uses a linear motion model with elapsed time dt.
 
-Updates the process covariance matrix Q_ to account for process noise.
+Updates the process covariance matrix Q_.
 
-Update Step
+Update
 
-Lidar: Uses standard Kalman Filter update equations (linear).
+Lidar: Standard Kalman Filter equations (linear).
 
-Radar: Uses EKF update equations for non-linear polar-to-Cartesian conversions.
-
-Computes the Jacobian matrix dynamically for radar measurements.
+Radar: Extended Kalman Filter equations with Jacobian computation for nonlinear conversion.
 
 RMSE Computation
 
-Estimates are compared to ground truth data.
+Compares predicted states with ground truth.
 
-Root Mean Square Error (RMSE) is calculated for position (x, y) and velocity (vx, vy) to evaluate performance.
+Tracks accuracy of position and velocity estimates.
 
 CSV Export (Optional)
 
-State estimates and RMSE values can be exported to a CSV file for further analysis or plotting in Python/Excel.
+Saves state estimates and RMSE values for further analysis or plotting.
+
+Installation
+
+Clone the repository:
