@@ -1,61 +1,18 @@
-Extended Kalman Filter (EKF) for Sensor Fusion 🚗
+Extended Kalman Filter Project
+Overview
 
-This project implements a sensor fusion algorithm using an Extended Kalman Filter (EKF) to track moving objects in 2D space. It fuses measurements from radar and lidar sensors to accurately estimate both position and velocity, suitable for self-driving car applications.
+This project implements an Extended Kalman Filter (EKF) for sensor fusion. The goal is to track objects by combining measurements from both radar and lidar sensors. The project was developed as part of the Udacity Self-Driving Car Engineer Nanodegree.
 
-Project Overview
+Features
 
-Languages & Libraries
+Implements a Kalman Filter for linear measurements (lidar).
 
-C++ – Core implementation
+Implements an Extended Kalman Filter for non-linear measurements (radar).
 
-Eigen – Matrix and vector operations
+Computes Root Mean Square Error (RMSE) to evaluate estimation accuracy.
 
-uWebSockets – Real-time data exchange with simulator
+Supports visualization and logging of the estimates.
 
-JSON for Modern C++ – Parsing sensor measurements
+Exports estimation and ground truth data to CSV for analysis.
 
-Key Features
-
-Sensor Fusion: Combines lidar and radar measurements for better accuracy.
-
-EKF Updates: Radar measurements use nonlinear EKF equations; lidar uses linear Kalman Filter equations.
-
-RMSE Evaluation: Computes Root Mean Square Error for position (x, y) and velocity (vx, vy).
-
-CSV Export: Optionally saves estimated states and RMSE for offline analysis.
-
-Real-Time Simulation: Integrates with a simulator or dataset for live visualization.
-
-How It Works
-
-Initialization
-
-The filter initializes the state vector x_ from the first measurement (radar or lidar).
-
-Covariance and process noise matrices are set.
-
-Prediction
-
-Uses a linear motion model with elapsed time dt.
-
-Updates the process covariance matrix Q_.
-
-Update
-
-Lidar: Standard Kalman Filter equations (linear).
-
-Radar: Extended Kalman Filter equations with Jacobian computation for nonlinear conversion.
-
-RMSE Computation
-
-Compares predicted states with ground truth.
-
-Tracks accuracy of position and velocity estimates.
-
-CSV Export (Optional)
-
-Saves state estimates and RMSE values for further analysis or plotting.
-
-Installation
-
-Clone the repository:
+Project Structure
